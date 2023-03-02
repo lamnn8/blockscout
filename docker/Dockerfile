@@ -73,6 +73,9 @@ FROM bitwalker/alpine-elixir-phoenix:1.14
 
 RUN apk --no-cache --update add jq
 
+WORKDIR /network-specs
+ADD https://metis-us-east-2-mainnet-json.s3.us-east-2.amazonaws.com/state-dump.latest.json andromeda.json
+ADD https://metis-us-east-2-goerli.s3.us-east-2.amazonaws.com/state-dump.latest.json metisgoerli.json
 WORKDIR /app
 
 COPY --from=builder /opt/release/blockscout .
